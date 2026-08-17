@@ -1,182 +1,631 @@
-<!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>EngineSync</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EngineSync - Automotive Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#14171C;
+    --ink-soft:#565D68;
+    --ink-faint:#9AA1AB;
+    --line:#E7E9EC;
+    --panel-navy:#0E1420;
+    --panel-navy-soft:#161D2C;
+    --card:#F4F5F7;
+    --card-line:#EAEBEE;
+    --orange:#FF6A1A;
+    --orange-ink:#7A2E00;
+    --orange-tint:#FFEDE1;
+    --blue:#3E7CB1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;line-height:1.1;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--orange);color:#fff;}
+  :focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+  button{font-family:inherit;cursor:pointer;}
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+  /* ---------- HEADER ---------- */
+  header{padding:22px 0;position:relative;z-index:50;}
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:1240px;margin:0 auto;padding:0 32px;
+  }
+  .nav-left{display:flex;align-items:center;gap:26px;}
+  .nav-left a{font-size:14.5px;color:var(--ink);display:flex;align-items:center;gap:5px;font-weight:500;}
+  .nav-left a svg{width:11px;height:11px;}
+  .logo{
+    position:absolute;left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;gap:9px;
+    font-weight:800;font-size:18px;letter-spacing:-0.01em;
+  }
+  .logo-mark{
+    width:32px;height:32px;border-radius:8px;
+    background:var(--orange);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:14px;
+  }
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .icon-btn{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);color:var(--ink-soft);
+    transition:border-color .2s, color .2s;
+  }
+  .icon-btn:hover{border-color:var(--ink-faint);color:var(--ink);}
+  .icon-btn svg{width:16px;height:16px;}
+  .nav-cta{
+    background:var(--orange);color:#fff;
+    padding:11px 22px;font-size:14px;font-weight:700;
+    border-radius:24px;border:none;
+    transition:background .2s, transform .2s;
+  }
+  .nav-cta:hover{background:#e85e10;transform:translateY(-1px);}
+  .lang{display:flex;align-items:center;gap:5px;font-size:13.5px;color:var(--ink-soft);font-weight:500;}
+  .lang svg{width:10px;height:10px;}
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">EngineSync</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+  /* ---------- HERO ---------- */
+  .hero-shell{padding:6px 0 90px;}
+  .hero{
+    background:linear-gradient(135deg,var(--panel-navy) 0%,var(--panel-navy-soft) 100%);
+    border-radius:28px;
+    padding:64px 64px 56px;
+    position:relative;overflow:hidden;
+    min-height:460px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 620px 420px at 82% 30%, rgba(255,106,26,0.16), transparent 62%);
+    pointer-events:none;
+  }
+  .hero-top{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    padding:7px 14px;border-radius:20px;
+    font-size:12.5px;color:#fff;font-weight:600;margin-bottom:24px;
+  }
+  .hero-chart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="generic.html">Generic</a></li>
-								<li><a href="elements.html">Elements</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+.chart-image {
+    width: 500px;
+    max-width: none;
+    height: auto;
+    left: 0px;
+    top: 5px;
+    position: relative;
+}
+  .hero-eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;}
+  .hero h1{color:#fff;font-size:clamp(32px,3.6vw,46px);margin-bottom:18px;}
+  .hero h1 span{color:var(--orange);}
+  .hero p{color:#B7BDC8;font-size:15.5px;line-height:1.65;max-width:400px;margin-bottom:30px;}
+  .hero-btn{
+    display:inline-block;background:var(--orange);color:#fff;
+    padding:14px 26px;border-radius:26px;font-weight:700;font-size:14.5px;
+    transition:background .2s, transform .2s;
+  }
+  .hero-btn:hover{background:#e85e10;transform:translateY(-2px);}
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<img src="images/transparent_white.png" alt="Logo" width="240">
-							<p></p>
-							<p>"Change is easy. Improvement is far more difficult."</p>
-							<p>-Ferdinand Porsche</p>
-						</div>
-					</section>
+  .hero-graphic{position:relative;z-index:1;display:flex;justify-content:flex-end;}
+  .hero-graphic svg{width:100%;max-width:420px;}
 
-				<!-- Wrapper -->
-					<section id="wrapper">
+  .hero-bottom{
+    position:relative;z-index:1;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:36px;
+  }
+  .hero-stats{display:flex;gap:34px;}
+  .hero-stats div{border-left:2px solid var(--orange);padding-left:12px;}
+  .hero-stats .n{color:#fff;font-weight:800;font-size:21px;}
+  .hero-stats .l{color:#8891A0;font-size:11.5px;margin-top:2px;}
+  .hero-dots{display:flex;gap:9px;}
+  .hero-dots span{
+    width:26px;height:26px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.25);
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;color:#B7BDC8;font-family:'JetBrains Mono',monospace;
+  }
+  .hero-dots span.active{border-color:var(--orange);color:#fff;background:rgba(255,106,26,0.15);}
 
-						<!-- One -->
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Content1</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
+  /* ---------- INTRO ---------- */
+  .intro{text-align:center;padding:10px 0 80px;}
+  .intro-mark{
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+    font-weight:800;font-size:19px;
+  }
+  .intro h2{font-size:clamp(24px,3vw,34px);max-width:760px;margin:0 auto 18px;}
+  .intro p{color:var(--ink-soft);font-size:15.5px;line-height:1.7;max-width:640px;margin:0 auto;}
 
-						<!-- Two -->
-							<section id="two" class="wrapper alt spotlight style2">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Content2</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:0 0 90px;}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:20px;flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(22px,2.6vw,30px);}
+  .sec-head .all{
+    display:flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--ink);
+    border-bottom:1px solid var(--ink);padding-bottom:2px;white-space:nowrap;
+  }
 
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Content3</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
-								<div class="inner">
-									<h2 class="major">IN DEVELOPMENT</h2>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-											<h3 class="major">Ante fermentum</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<h3 class="major">Fusce consequat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
-									<ul class="actions">
-										<li><a href="#" class="button">Browse All</a></li>
-									</ul>
-								</div>
-							</section>
+  /* ---------- CARDS (builds/updates) ---------- */
+  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .card{
+    background:var(--card);border:1px solid var(--card-line);border-radius:18px;
+    overflow:hidden;transition:transform .25s, box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -18px rgba(20,23,28,0.25);}
+  .card-media{
+    position:relative;height:190px;
+    background:linear-gradient(160deg,#EDEEF1,#E3E5E9);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--card-line);
+  }
+  .card-media svg{width:78%;}
+  .card-chip{
+    position:absolute;top:14px;left:14px;
+    background:#fff;border:1px solid var(--card-line);
+    border-radius:20px;padding:5px 10px 5px 8px;
+    display:flex;align-items:center;gap:5px;
+    font-size:11px;font-weight:600;color:var(--ink-soft);
+  }
+  .card-chip svg{width:12px;height:12px;}
+  .card-badge{
+    position:absolute;top:14px;right:14px;
+    background:var(--orange);color:#fff;font-weight:700;font-size:11px;
+    padding:5px 10px;border-radius:20px;
+  }
+  .card-body{padding:20px 22px 24px;}
+  .card-cat{
+    font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--ink-faint);
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .card-date{font-size:12.5px;color:var(--orange-ink);background:var(--orange-tint);display:inline-block;padding:3px 9px;border-radius:10px;font-weight:600;margin-bottom:10px;}
+  .card h3{font-size:18px;margin-bottom:8px;font-weight:700;}
+  .card-stats{display:flex;gap:16px;margin-bottom:12px;}
+  .card-stats div{display:flex;flex-direction:column;}
+  .card-stats .from{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);text-decoration:line-through;}
+  .card-stats .to{font-family:'JetBrains Mono',monospace;font-size:14.5px;font-weight:700;color:var(--ink);}
+  .card-stats .l{font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;}
+  .card-link{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1px solid var(--card-line);
+    padding:9px 15px;border-radius:20px;
+    font-size:13px;font-weight:600;color:var(--ink);
+    transition:border-color .2s, gap .2s;
+  }
+  .card-link:hover{border-color:var(--ink-faint);gap:9px;}
+  .card-link svg{width:12px;height:12px;}
 
-					</section>
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service{
+    border:1px solid var(--line);border-radius:18px;padding:28px 24px;
+    transition:border-color .2s, background .2s;
+  }
+  .service:hover{border-color:var(--orange);background:var(--orange-tint);}
+  .service-icon{
+    width:44px;height:44px;border-radius:12px;background:var(--card);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .service-icon svg{width:20px;height:20px;color:var(--orange);}
+  .service h3{font-size:17px;margin-bottom:9px;}
+  .service p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;}
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-							<ul class="contact">
-								<li class="icon solid fa-home">
-									Untitled Inc<br />
-									1234 Somewhere Road Suite #2894<br />
-									Nashville, TN 00000-0000
-								</li>
-								<li class="icon solid fa-phone">(000) 000-0000</li>
-								<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-								<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
-								<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
-								<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
+  /* ---------- PROCESS ---------- */
+  .process-list{display:flex;flex-direction:column;}
+  .process-item{
+    display:grid;grid-template-columns:64px 1fr auto;gap:24px;
+    padding:26px 0;border-top:1px solid var(--line);align-items:center;
+  }
+  .process-item:last-child{border-bottom:1px solid var(--line);}
+  .process-step{
+    width:44px;height:44px;border-radius:50%;background:var(--card);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;color:var(--orange);
+  }
+  .process-item h3{font-size:17px;margin-bottom:4px;}
+  .process-item p{color:var(--ink-soft);font-size:14px;line-height:1.6;max-width:460px;}
+  .process-tag{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    background:var(--card);padding:6px 12px;border-radius:16px;white-space:nowrap;
+  }
 
-			</div>
+  /* ---------- STATS ---------- */
+  .stats-panel{
+    background:var(--panel-navy);border-radius:24px;
+    display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;
+  }
+  .stat{padding:38px 30px;border-left:1px solid rgba(255,255,255,0.08);}
+  .stat:first-child{border-left:none;}
+  .stat .num{color:#fff;font-weight:800;font-size:32px;}
+  .stat .num span{color:var(--orange);}
+  .stat .lbl{color:#8891A0;font-size:12.5px;margin-top:8px;line-height:1.4;}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ---------- QUOTE ---------- */
+  .quote-wrap{
+    background:var(--card);border-radius:24px;padding:56px 60px;
+    display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;
+  }
+  .quote-mark{font-size:64px;color:var(--orange);font-weight:800;line-height:1;font-family:'Plus Jakarta Sans',sans-serif;}
+  blockquote{font-size:clamp(19px,2.2vw,25px);line-height:1.5;font-weight:600;margin-bottom:18px;}
+  .quote-attr{display:flex;align-items:center;gap:12px;}
+  .quote-attr .swatch{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--blue));}
+  .quote-attr .name{font-weight:700;font-size:14px;}
+  .quote-attr .role{font-size:12.5px;color:var(--ink-faint);}
 
-	</body>
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--panel-navy);border-radius:28px;
+    padding:64px;position:relative;overflow:hidden;
+  }
+  .contact::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 560px 380px at 10% 90%, rgba(62,124,177,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .contact h2{color:#fff;font-size:clamp(24px,2.8vw,32px);margin-bottom:16px;}
+  .contact p.lead{color:#B7BDC8;font-size:15px;line-height:1.65;margin-bottom:28px;max-width:400px;}
+  .contact-info{display:flex;flex-direction:column;gap:16px;}
+  .contact-info div{display:flex;flex-direction:column;gap:2px;}
+  .contact-info .l{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7C8492;text-transform:uppercase;letter-spacing:0.06em;}
+  .contact-info .v{font-size:14.5px;color:#fff;}
+
+  .form{display:flex;flex-direction:column;gap:14px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  label{font-size:12px;color:#B7BDC8;margin-bottom:6px;display:block;font-weight:500;}
+  input,select,textarea{
+    width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#fff;
+    padding:12px 14px;font-family:inherit;font-size:14px;border-radius:12px;
+    transition:border-color .2s;
+  }
+  input::placeholder,textarea::placeholder{color:#6B7280;}
+  input:focus,select:focus,textarea:focus{border-color:var(--orange);outline:none;}
+  textarea{resize:vertical;min-height:80px;}
+  select option{background:#0E1420;}
+  .form button{
+    margin-top:4px;align-self:flex-start;background:var(--orange);color:#fff;
+    padding:13px 26px;border-radius:24px;font-weight:700;font-size:14px;border:none;
+    transition:background .2s, transform .2s;
+  }
+  .form button:hover{background:#e85e10;transform:translateY(-2px);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0 30px;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-links{display:flex;gap:26px;}
+  .footer-links a{font-size:13.5px;color:var(--ink-soft);}
+  .footer-links a:hover{color:var(--ink);}
+  .footer-copy{font-size:12.5px;color:var(--ink-faint);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-top{grid-template-columns:1fr;}
+    .hero-graphic{justify-content:center;order:-1;}
+    .cards-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-panel{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .stat{border-top:1px solid rgba(255,255,255,0.08);}
+    .stat:nth-child(1),.stat:nth-child(2){border-top:none;}
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .quote-wrap{grid-template-columns:1fr;padding:40px 32px;}
+    .nav-left{display:none;}
+    .logo{position:static;transform:none;}
+    nav{justify-content:space-between;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 18px;}
+    nav{padding:0 18px;}
+    .hero{padding:36px 26px 30px;border-radius:20px;}
+    .hero-bottom{flex-direction:column;align-items:flex-start;gap:20px;}
+    .cards-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-item{grid-template-columns:44px 1fr;}
+    .process-tag{grid-column:2;}
+    .form-row{grid-template-columns:1fr;}
+    .contact{padding:36px 26px;}
+    .quote-wrap{padding:32px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-left">
+      <a href="#services">Services <svg viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      <a href="mailto:your@email.com?subject=Contact">Contact</a>
+    </div>
+    <a href="#top" class="logo"><span class="logo-mark">ES</span>EngineSync</a>
+    <div class="nav-right">
+      <span class="lang">EN <svg viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4"/></svg></span>
+      <a class="icon-btn" href="#" aria-label="Search"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+      <a href="mailto:your@email.com?subject=Consultation Request" class="nav-cta">Book Consultation</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="wrap hero-shell">
+    <div class="hero">
+      <div class="hero-top">
+        <div>
+          <span class="hero-eyebrow"><i></i>Automotive Engineering</span>
+          <h1>Engineered to <span>last</span>. Refined for better drivability.</h1>
+          <p>We make cars better to drive—through thoughtful calibration, purpose-built parts, and engineering that puts reliability first.</p>
+          <a href="#contact" class="hero-btn">Book a Consultation</a>
+        </div>
+        <div class="hero-chart">
+          <img src="images/chart.png" alt="chart-image" class="chart-image">
+        </div>
+      </div>
+      <div class="hero-middle">
+      <div class="hero-bottom">
+        <div class="hero-stats">
+          <div><div class="n mono">100+</div><div class="l">Solutions Developed</div></div>
+          <div><div class="n mono">50000+</div><div class="l">Kilometers Tested</div></div>
+          <div><div class="n mono">8 yrs</div><div class="l">Engineering Experience</div></div>
+        </div>
+        <div class="hero-dots">
+          <span class="active">1</span><span>2</span><span>3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+   <br>
+  <div class="wrap intro">
+    <div class="intro-mark"><span class="logo-mark" style="width:26px;height:26px;font-size:11px;">ES</span>EngineSync</div>
+    <h2 class="reveal">We engineer for efficiency, longevity, and the enjoyment of driving.</h2>
+    <p class="reveal">From ECU calibration to custom components, every improvement is developed with a simple goal: make better use of what is already there. We focus on efficiency, usable torque, response, and drivability — with the enjoyment of driving always at the centre.</p>
+  </div>
+
+  <!-- BUILDS -->
+  <section id="builds">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Recent builds</h2>
+        <a href="#" class="all">View all <svg viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal">
+          <div class="card-media">
+            <span class="card-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 6h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>OBD Read/Write</span>
+            <span class="card-badge">NEW</span>
+            <svg viewBox="0 0 200 100"><path d="M20,65 Q30,40 60,38 L140,38 Q165,40 178,65 L178,72 L20,72 Z" fill="none" stroke="#C7CBD1" stroke-width="2.5"/><circle cx="55" cy="74" r="12" fill="none" stroke="#FF6A1A" stroke-width="2.5"/><circle cx="150" cy="74" r="12" fill="none" stroke="#FF6A1A" stroke-width="2.5"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">BMW · B58 Inline-Six</div>
+            <span class="card-date">3. Aug 2026</span>
+            <h3>Stage 2 remap + custom intake</h3>
+            <div class="card-stats">
+              <div><span class="from mono">335 hp</span><span class="to mono">428 hp</span><span class="l">Power</span></div>
+              <div><span class="from mono">369 lb-ft</span><span class="to mono">441 lb-ft</span><span class="l">Torque</span></div>
+            </div>
+            <a href="#" class="card-link">Read more <svg viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4"/></svg></a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-media">
+            <span class="card-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6"/></svg>Turbo Kit</span>
+            <svg viewBox="0 0 200 100"><path d="M15,68 Q28,35 65,35 L135,35 Q172,35 185,68 L185,74 L15,74 Z" fill="none" stroke="#C7CBD1" stroke-width="2.5"/><circle cx="52" cy="76" r="12" fill="none" stroke="#3E8FC7" stroke-width="2.5"/><circle cx="148" cy="76" r="12" fill="none" stroke="#3E8FC7" stroke-width="2.5"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">2.0L Direct-Injection Four</div>
+            <span class="card-date">31. Jul 2026</span>
+            <h3>Track-focused turbo upgrade</h3>
+            <div class="card-stats">
+              <div><span class="from mono">228 hp</span><span class="to mono">341 hp</span><span class="l">Power</span></div>
+              <div><span class="from mono">258 lb-ft</span><span class="to mono">352 lb-ft</span><span class="l">Torque</span></div>
+            </div>
+            <a href="#" class="card-link">Read more <svg viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4"/></svg></a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-media">
+            <span class="card-chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6"/></svg>Fabrication</span>
+            <svg viewBox="0 0 200 100"><path d="M10,66 Q35,32 70,32 L130,32 Q165,32 190,66 L190,73 L10,73 Z" fill="none" stroke="#C7CBD1" stroke-width="2.5"/><circle cx="48" cy="75" r="13" fill="none" stroke="#FF6A1A" stroke-width="2.5"/><circle cx="152" cy="75" r="13" fill="none" stroke="#FF6A1A" stroke-width="2.5"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">4.0L V8 · Naturally Aspirated</div>
+            <span class="card-date">29. Jul 2026</span>
+            <h3>Long-tube header fabrication</h3>
+            <div class="card-stats">
+              <div><span class="from mono">414 hp</span><span class="to mono">452 hp</span><span class="l">Power</span></div>
+              <div><span class="from mono">317 lb-ft</span><span class="to mono">338 lb-ft</span><span class="l">Torque</span></div>
+            </div>
+            <a href="#" class="card-link">Read more <svg viewBox="0 0 10 10" fill="none"><path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4"/></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>What we do</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h4l2-6 4 12 2-6h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>ECU Remapping</h3>
+          <p>Custom maps for fuel, ignition, and boost — built per vehicle, not pulled from a generic file.</p>
+        </div>
+        <div class="service reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Custom Fabrication</h3>
+          <p>CNC-machined manifolds, brackets, and housings, designed in CAD and cut in-house to spec.</p>
+        </div>
+        <div class="service reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 18l5-8 4 4 4-9 5 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Dyno Validation</h3>
+          <p>Every tune and every part is pulled on our own rollers before we call it finished.</p>
+        </div>
+        <div class="service reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.5-.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h3>Turbo &amp; Induction</h3>
+          <p>Kit design and fitment for induction upgrades, matched to your target power band.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>How a build runs</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-item reveal">
+          <div class="process-step mono">01</div>
+          <div><h3>Consultation &amp; goals</h3><p>We start with your car, your driving, and your target — daily comfort, track lap times, or a specific power figure.</p></div>
+          <div class="process-tag">Day 1</div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step mono">02</div>
+          <div><h3>CAD design &amp; prototyping</h3><p>Custom parts get modeled and clearance-checked before a single piece of stock is cut.</p></div>
+          <div class="process-tag">Week 1–2</div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step mono">03</div>
+          <div><h3>Fabrication &amp; machining</h3><p>Parts are CNC-milled and fitted in-house, to tolerances measured in hundredths of a millimeter.</p></div>
+          <div class="process-tag">Week 2–3</div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step mono">04</div>
+          <div><h3>ECU calibration</h3><p>Fuel, ignition, and boost tables are rebuilt around the new hardware, not just nudged from stock.</p></div>
+          <div class="process-tag">Week 3</div>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-step mono">05</div>
+          <div><h3>Dyno validation &amp; handoff</h3><p>A full pull confirms the power curve is safe and repeatable — you leave with the sheet, not a promise.</p></div>
+          <div class="process-tag">Week 3–4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="wrap">
+      <div class="stats-panel reveal">
+        <div class="stat"><div class="num">1,240<span>+</span></div><div class="lbl">Vehicles tuned since 2008</div></div>
+        <div class="stat"><div class="num">460<span>+</span></div><div class="lbl">Custom parts designed &amp; machined</div></div>
+        <div class="stat"><div class="num">0.05<span>mm</span></div><div class="lbl">Typical CNC tolerance</div></div>
+        <div class="stat"><div class="num">98<span>%</span></div><div class="lbl">Customers who return</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section>
+    <div class="wrap">
+      <div class="quote-wrap reveal">
+        <div class="quote-mark">“</div>
+        <div>
+          <blockquote>They designed a manifold that didn't exist on any parts site, then tuned around it. The dyno sheet matched what it felt like on the road.</blockquote>
+          <div class="quote-attr">
+            <div class="swatch"></div>
+            <div><div class="name">M. Reyes</div><div class="role">B58 build, Stage 2 custom intake</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div class="contact-grid">
+          <div>
+            <h2>Tell us what the car needs to do.</h2>
+            <p class="lead">Send your vehicle details and your goal and we'll follow up to schedule an intake appointment.</p>
+            <div class="contact-info">
+              <div><span class="l">Shop</span><span class="v">4417 Industrial Row, Unit C</span></div>
+              <div><span class="l">Phone</span><span class="v">+1 (555) 014-2298</span></div>
+              <div><span class="l">Hours</span><span class="v">Mon–Fri, 8:00–18:00</span></div>
+            </div>
+          </div>
+          <form class="form" onsubmit="return false;">
+            <div class="form-row">
+              <div><label for="name">Name</label><input id="name" type="text" placeholder="Your name"></div>
+              <div><label for="vehicle">Vehicle</label><input id="vehicle" type="text" placeholder="Make, model, year"></div>
+            </div>
+            <div class="form-row">
+              <div><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com"></div>
+              <div>
+                <label for="goal">Primary goal</label>
+                <select id="goal">
+                  <option>ECU tuning</option>
+                  <option>Custom fabrication</option>
+                  <option>Turbo / induction upgrade</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div><label for="details">Project details</label><textarea id="details" placeholder="Current mods, target power, timeline..."></textarea></div>
+            <button type="submit">Request Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="logo" style="position:static;transform:none;font-size:15px;"><span class="logo-mark" style="width:22px;height:22px;font-size:10px;">AW</span>Apexworks</div>
+    <div class="footer-links">
+      <a href="#builds">Builds</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Apexworks Engineering. All builds dyno-verified.</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
 </html>
